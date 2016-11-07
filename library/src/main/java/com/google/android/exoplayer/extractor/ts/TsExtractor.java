@@ -533,7 +533,7 @@ public final class TsExtractor implements Extractor {
           streamType = TS_STREAM_TYPE_DTS;
         }
 
-        data.skipBytes(descriptorLength);
+        data.skipBytes(Math.min(descriptorLength, data.bytesLeft()));
       }
       data.setPosition(descriptorsEndPosition);
       return streamType;
